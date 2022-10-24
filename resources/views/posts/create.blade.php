@@ -1,7 +1,10 @@
 <x-layout>
-    <section class="px-6 py-8">
-        <x-panel class="max-w-sm mx-auto">
-            <form method="POST" action="/admin/posts" >
+    <section class="py-8 max-w-md mx-auto">
+        <h1 class="text-lg font-bold mb-4">
+            Publish New Post
+        </h1>
+        <x-panel>
+            <form method="POST" action="/admin/posts" enctype="multipart/form-data">
                 @csrf
 
                 <div class="mt-6">
@@ -42,6 +45,24 @@
 
                 <div class="mt-6">
                     <label class="block mb-2 uppercase font-bold text-xs text-gray-700"
+                        for="thumbnail">
+                        Thumbnail
+                    </label>
+                    <input class="border border-gray-400 p-2 w-full"
+                        type="file"
+                        name="thumbnail"
+                        id="thumbnail"
+                        value="{{ old('thumbnail') }}"
+                        required
+                    >
+
+                    @error('thumbnail')
+                        <p class="text-xs text-red-500 mt-2">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <div class="mt-6">
+                    <label class="block mb-2 uppercase font-bold text-xs text-gray-700"
                         for="excerpt">
                         Excerpt
                     </label>
@@ -49,7 +70,7 @@
                         name="excerpt"
                         id="excerpt"
                         required
-                    >"{{ old('excerpt') }}"</textarea>
+                    >{{ old('excerpt') }}</textarea>
 
                     @error('excerpt')
                         <p class="text-xs text-red-500 mt-2">{{ $message }}</p>
@@ -65,7 +86,7 @@
                         name="body"
                         id="body"
                         required
-                    >"{{ old('body') }}"</textarea>
+                    >{{ old('body') }}</textarea>
 
                     @error('body')
                         <p class="text-xs text-red-500 mt-2">{{ $message }}</p>
