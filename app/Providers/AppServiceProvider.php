@@ -25,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
 
             $client = (new ApiClient)->setConfig([
                 'apiKey' => config('services.mailchimp.key'),
-                'server' => 'us21'
+                'server' => config('services.mailchimp.server')
                 ]);
 
             return new MailchimpNewsletter($client);
@@ -42,7 +42,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Model::unguard();
         Gate::define('admin', function (User $user) {
-            return $user->username === 'astra';
+            return $user->username === config('services.admin.name');
         });
 
         Blade::if('admin', function () {
