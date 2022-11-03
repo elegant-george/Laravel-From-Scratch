@@ -2,7 +2,7 @@
 
 This is a simple site that I following this [tutorial](https://laracasts.com/series/laravel-8-from-scratch) created.
 
-You can find the mentor version [here](https://github.com/JeffreyWay/Laravel-From-Scratch-Blog-Project).
+You can find the  instructor's version [here](https://github.com/JeffreyWay/Laravel-From-Scratch-Blog-Project).
 
 ## How to use
 
